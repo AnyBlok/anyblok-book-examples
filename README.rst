@@ -21,9 +21,9 @@ Rooms booking
 
 Anyblok service to manage (class)rooms reservation
 
+This repo contains examples and exercises exposed and detail in the
+`Anyblok book <https://github.com/AnyBlok/anyblok-book>`_.
 
-* Free software: Mozilla Public License Version 2.0
-* Documentation: https://rooms-booking.readthedocs.io.
 
 
 Features
@@ -35,9 +35,7 @@ Features
 Author
 ------
 
-Pierre Verkest 
-pverkest@anybox.fr
-https://github.com/petrus-v
+* Pierre Verkest
 
 Credits
 -------
@@ -49,3 +47,8 @@ This `Anyblok`_ package was created with `audreyr/cookiecutter`_ and the `AnyBlo
 .. _`AnyBlok/cookiecutter-anyblok-project`: https://github.com/Anyblok/cookiecutter-anyblok-project
 .. _`audreyr/cookiecutter`: https://github.com/audreyr/cookiecutter
 
+License
+-------
+
+Free software: `Mozilla Public License Version 2.0
+<https://mozilla.org/MPL/2.0/>`_
