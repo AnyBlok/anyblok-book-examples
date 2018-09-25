@@ -3,3 +3,4 @@ coverage
 WebTest
 sphinx
 sphinxcontrib-httpdomain
+-e .
