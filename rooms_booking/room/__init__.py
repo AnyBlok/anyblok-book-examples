@@ -24,15 +24,18 @@ class Room(Blok):
         from . import model  # noqa
         reload(model)
 
-    @classmethod
-    def pyramid_load_config(cls, config):
-        config.add_route("root", "/")
-        config.add_route("example_list", "/example")
-        config.add_route("example", "/example/{id}")
-        config.scan(cls.__module__ + '.views')
-
-    def update(self, latest):
+    def update(self, latest_version):
         """Update blok"""
         # if we install this blok in the database we add a new record
-        if not latest:
-            self.registry.Example.insert(name="An example")
+        if not latest_version:
+            self.install()
+
+    def install(self):
+        self.registry.Address.insert(
+            first_name="La Sorbonne",
+            last_name="La Chancellerie des Universités de Paris",
+            street1="47, rue des Écoles ",
+            zip_code="75230",
+            city="Paris cedex 05",
+            country="FRA",
+        )
