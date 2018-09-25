@@ -8,21 +8,21 @@ class Room(Blok):
     """
     version = "0.1.0"
     author = "Pierre Verkest"
-    required = ['anyblok-core']
+    required = ['anyblok-core', 'address']
 
     @classmethod
     def import_declaration_module(cls):
         """Python module to import in the given order at start-up
         """
-        from . import model  # noqa
+        from . import address  # noqa
 
     @classmethod
     def reload_declaration_module(cls, reload):
         """Python module to import while reloading server (ie when
         adding Blok at runtime
         """
-        from . import model  # noqa
-        reload(model)
+        from . import address  # noqa
+        reload(address)
 
     def update(self, latest_version):
         """Update blok"""
@@ -38,4 +38,5 @@ class Room(Blok):
             zip_code="75230",
             city="Paris cedex 05",
             country="FRA",
+            access="Crie fort pour réveiller le consièrge"
         )
