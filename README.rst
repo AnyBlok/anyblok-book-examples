@@ -6,12 +6,12 @@
 .. v. 2.0. If a copy of the MPL was not distributed with this file,You can
 .. obtain one at http://mozilla.org/MPL/2.0/.
 
-.. image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-02_extend-blok
+.. image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-03_create-model
     :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
     :alt: Build status
 
-.. image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-02_extend-blok
-    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-02_extend-blok
+.. image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-03_create-model
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-03_create-model
     :alt: Coverage
 
 
