@@ -23,6 +23,7 @@ class Room(Blok):
         """Python module to import in the given order at start-up
         """
         from . import address  # noqa
+        from . import room # noqa
 
     @classmethod
     def reload_declaration_module(cls, reload):
@@ -30,7 +31,9 @@ class Room(Blok):
         adding Blok at runtime
         """
         from . import address  # noqa
+        from . import room  # noqa
         reload(address)
+        reload(room)
 
     def update(self, latest_version):
         """Update blok"""
