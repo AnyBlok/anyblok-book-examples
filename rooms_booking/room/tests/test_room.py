@@ -13,22 +13,24 @@ import pytz
 class TestRoom:
     """Test Room model"""
 
-    def test_create_room(self, rollback_registry):
+    def test_create_room(self, rollback_registry, an_address):
         registry = rollback_registry
         room_count = registry.Room.query().count()
         room = registry.Room.insert(
             name="A1",
             capacity=25,
+            address=an_address
         )
         assert registry.Room.query().count() == room_count + 1
         assert room.name == "A1"
 
-    def test_track_modification_date(self, rollback_registry):
+    def test_track_modification_date(self, rollback_registry, an_address):
         registry = rollback_registry
         before_create = datetime.now(tz=pytz.timezone(time.tzname[0]))
         room = registry.Room.insert(
             name="A1",
             capacity=25,
+            address=an_address
         )
         room.refresh()
         after_create = datetime.now(tz=pytz.timezone(time.tzname[0]))

@@ -8,6 +8,7 @@
 
 from anyblok import Declarations
 from anyblok.column import String, Integer
+from anyblok.relationship import Many2One
 
 Model = Declarations.Model
 Mixin = Declarations.Mixin
@@ -20,3 +21,6 @@ class Room(Mixin.IdColumn, Mixin.TrackModel):
 
     name = String(label="Room name", nullable=False, index=True)
     capacity = Integer(label="Capacity", nullable=False)
+    address = Many2One(
+        label="Address", model=Model.Address, nullable=False, one2many="rooms"
+    )
