@@ -20,6 +20,7 @@ Here the state of each branch
  III-02_   III-02_extend-blok_       |III-02-travis|   |III-02-coverage|
  III-03_   III-03_create-model_      |III-03-travis|   |III-03-coverage|
  III-04_   III-04_mixins_            |III-04-travis|   |III-04-coverage|
+ III-05_   III-05_link-models_       |III-05-travis|   |III-05-coverage|
  ========= ========================= ================= ===================
 
 
@@ -75,4 +76,13 @@ Authors
     :alt: Build status
 .. |III-04-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-04_mixins
     :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-04_mixins
+    :alt: Coverage
+
+.. _III-05: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/05_link_models.html
+.. _III-05_link-models: https://github.com/AnyBlok/anyblok-book-examples/tree/III-05_link-models
+.. |III-05-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-05_link-models
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |III-05-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-05_link-models
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-05_link-models
     :alt: Coverage
