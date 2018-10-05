@@ -38,6 +38,7 @@ install:
   - pip install -r requirements.test.txt
   - pip install nose
   - pip install coveralls
+  - pip install .
 
 script:
   - flake8 rooms_booking --ignore F999
