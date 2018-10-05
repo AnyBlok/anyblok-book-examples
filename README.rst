@@ -59,7 +59,7 @@ Authors
     :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-02_extend-blok
     :alt: Coverage
 
-.. _III-03: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/02_extend_blok.html
+.. _III-03: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/03_create_model.html
 .. _III-03_create-model: https://github.com/AnyBlok/anyblok-book-examples/tree/III-03_create-model
 .. |III-03-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-03_create-model
     :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
@@ -68,7 +68,7 @@ Authors
     :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-03_create-model
     :alt: Coverage
 
-.. _III-04: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/02_extend_blok.html
+.. _III-04: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/04_mixins.html
 .. _III-04_mixins: https://github.com/AnyBlok/anyblok-book-examples/tree/III-04_mixins
 .. |III-04-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-04_mixins
     :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
