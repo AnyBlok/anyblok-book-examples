@@ -28,6 +28,7 @@ requirements = [
     'anyblok',
     'psycopg2',
     'anyblok_pyramid',
+    'anyblok-pyramid-rest-api',
     'anyblok_address',
     'anyblok_mixins',
 ]

@@ -11,22 +11,9 @@
 from anyblok.blok import Blok
 
 
-class HttpApi(Blok):
+class HttpAPI(Blok):
     """Room Booking Http API's Blok class definition
     """
     version = "0.1.0"
     author = "Pierre Verkest"
-    required = ['anyblok-core', 'room', 'anyblok-pyramid-rest-api']
-
-    @classmethod
-    def import_declaration_module(cls):
-        """Python module to import in the given order at start-up
-        """
-        pass
-
-    @classmethod
-    def reload_declaration_module(cls, reload):
-        """Python module to import while reloading server (ie when
-        adding Blok at runtime
-        """
-        pass
+    required = ['anyblok-core', 'room']
