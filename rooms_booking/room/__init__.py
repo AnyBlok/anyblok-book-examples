@@ -90,3 +90,53 @@ class Room(Blok):
             capacity=42,
             address=trinity
         )
+        imt_lille = self.registry.Address.insert(
+            first_name="l'IMT Lille Douai",
+            last_name="Université de Lille",
+            street1="Site de Villeneuve d'Ascq",
+            street2="20 rue Guglielmo Marconi",
+            zip_code="59650",
+            city="Villeneuve - d’Ascq",
+            country="FRA",
+            access="Ring the bell!"
+        )
+        self.registry.Room.insert(
+            name="Salle E001S",
+            capacity=42,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Salle E002S",
+            capacity=28,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Salle E003S",
+            capacity=60,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Byron",
+            capacity=200,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Pascal",
+            capacity=150,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Morse",
+            capacity=500,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Shannon",
+            capacity=200,
+            address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Chappe",
+            capacity=500,
+            address=imt_lille
+        )
