@@ -15,11 +15,23 @@ import pytz
 class TestRoom(BlokTestCase):
     """ Test python api on AnyBlok models"""
 
+    def setUp(self):
+        self.an_address = self.registry.Address.insert(
+            first_name="The Queen's College",
+            last_name="University of oxford",
+            street1="High Street",
+            zip_code="OX1 4AW",
+            city="Oxford",
+            country="GBR",
+            access="Kick the door to open it!"
+        )
+
     def test_create_room(self):
         room_count = self.registry.Room.query().count()
         room = self.registry.Room.insert(
             name="A1",
             capacity=25,
+            address=self.an_address
         )
         self.assertEqual(
             self.registry.Room.query().count(),
@@ -35,6 +47,7 @@ class TestRoom(BlokTestCase):
         room = self.registry.Room.insert(
             name="A1",
             capacity=25,
+            address=self.an_address
         )
         room.refresh()
         after_create = datetime.now(tz=pytz.timezone(time.tzname[0]))
