@@ -16,7 +16,7 @@ class Room(Blok):
     """
     version = "0.1.0"
     author = "Pierre Verkest"
-    required = ['anyblok-core', 'address']
+    required = ['anyblok-core', 'address', 'anyblok-mixins']
 
     @classmethod
     def import_declaration_module(cls):
