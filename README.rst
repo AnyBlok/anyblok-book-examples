@@ -32,7 +32,7 @@ Authors
 
 
 
-.. _II: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/01_external_blok.html
+.. _II: https://anyblok.gitbooks.io/anyblok-book/content/en/02_project/
 .. _II_setup-project: https://github.com/AnyBlok/anyblok-book-examples/tree/II_setup-project
 .. |II-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=II_setup-project
     :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
