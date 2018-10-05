@@ -12,15 +12,15 @@ going and boring parts so you have to get the branch before the chapter.
 
 Here the state of each branch
 
-========================= ========= ================= ===================
- branch name              Chapter   travis state       coverage
-========================= ========= ================= ===================
-II_setup-project_         II_       |II-travis|       |II-coverage|
-III-01_external-blok_     III-01_   |III-01-travis|   |III-01-coverage|
-III-02_extend-blok_       III-02_   |III-02-travis|   |III-02-coverage|
-III-03_create-model_      III-03_   |III-03-travis|   |III-03-coverage|
-III-04_mixins_            III-04_   |III-04-travis|   |III-04-coverage|
-========================= ========= ================= ===================
+ ========= ========================= ================= ===================
+  Chapter   branch name              travis state       coverage
+ ========= ========================= ================= ===================
+ II_       II_setup-project_         |II-travis|       |II-coverage|
+ III-01_   III-01_external-blok_     |III-01-travis|   |III-01-coverage|
+ III-02_   III-02_extend-blok_       |III-02-travis|   |III-02-coverage|
+ III-03_   III-03_create-model_      |III-03-travis|   |III-03-coverage|
+ III-04_   III-04_mixins_            |III-04-travis|   |III-04-coverage|
+ ========= ========================= ================= ===================
 
 
 * Free software: Mozilla Public License Version 2.0
