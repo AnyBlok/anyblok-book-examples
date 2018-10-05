@@ -140,3 +140,42 @@ class Room(Blok):
             capacity=500,
             address=imt_lille
         )
+        self.registry.Room.insert(
+            name="Salle 101",
+            capacity=25,
+            address=sorbonne
+        )
+        self.registry.Room.insert(
+            name="Salle 102",
+            capacity=30,
+            address=sorbonne
+        )
+        self.registry.Room.insert(
+            name="Salle 103",
+            capacity=28,
+            address=sorbonne
+        )
+        trinity = self.registry.Address.insert(
+            first_name="Trinity College",
+            last_name="University of Oxford",
+            street1="Broad Street",
+            zip_code="OX1 3BH",
+            city="Oxford",
+            country="GBR",
+            access="Ring the bell!"
+        )
+        self.registry.Room.insert(
+            name="Room 101",
+            capacity=47,
+            address=trinity
+        )
+        self.registry.Room.insert(
+            name="102",
+            capacity=50,
+            address=trinity
+        )
+        self.registry.Room.insert(
+            name="103",
+            capacity=42,
+            address=trinity
+        )
