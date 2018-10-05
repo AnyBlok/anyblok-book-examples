@@ -43,7 +43,9 @@ setup(
     packages=find_packages(),
     entry_points={
         'bloks': [
-            'room=rooms_booking.room:Room'
+            'room=rooms_booking.room:Room',
+            'person=rooms_booking.person:Person',
+            'university=rooms_booking.university:University',
             ]
     },
     include_package_data=True,
