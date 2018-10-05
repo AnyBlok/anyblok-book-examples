@@ -38,6 +38,7 @@ install:
   - pip install coveralls
   - make setup-tests
 
+
 script:
   - make lint
   - make test
