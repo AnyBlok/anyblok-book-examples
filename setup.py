@@ -47,7 +47,8 @@ setup(
     packages=find_packages(),
     entry_points={
         'bloks': [
-            'room=rooms_booking.room:Room'
+            'room=rooms_booking.room:Room',
+            'rooms-booking-http-api=rooms_booking.http_api:HttpAPI',
             ]
     },
     include_package_data=True,
