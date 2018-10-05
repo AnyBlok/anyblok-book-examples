@@ -1,33 +1,78 @@
-=============
-Rooms booking
-=============
+=====================
+AnyBlok book examples
+=====================
 
-Anyblok service to manage (class)rooms reservation
+The anyblok book example source code.
+
+In this repo you'll get a branch at the end of each chapter to help
+you to start with the expected environment before reading a chapter.
+
+In some special case we provide dedicated branch that helps to keep
+going and boring parts so you have to get the branch before the chapter.
+
+Here the state of each branch
+
+========================= ========= ================= ===================
+ branch name              Chapter   travis state       coverage
+========================= ========= ================= ===================
+II_setup-project_         II_       |II-travis|       |II-covarage|
+III-01_external-blok_     III-01_   |III-01-travis|   |III-01-covarage|
+III-02_extend-blok_       III-02_   |III-02-travis|   |III-02-covarage|
+III-03_create-model_      III-03_   |III-03-travis|   |III-03-covarage|
+III-04_mixins_            III-04_   |III-04-travis|   |III-04-covarage|
+========================= ========= ================= ===================
 
 
 * Free software: Mozilla Public License Version 2.0
-* Documentation: https://rooms-booking.readthedocs.io.
 
-
-Features
---------
-
-* TODO
-
-Author
-------
-
-Pierre Verkest 
-pverkest@anybox.fr
-https://github.com/petrus-v
-
-Credits
+Authors
 -------
 
-.. _`Anyblok`: https://github.com/AnyBlok/AnyBlok
+* Pierre Verkest
 
-This `Anyblok`_ package was created with `audreyr/cookiecutter`_ and the `AnyBlok/cookiecutter-anyblok-project`_ project template.
 
-.. _`AnyBlok/cookiecutter-anyblok-project`: https://github.com/Anyblok/cookiecutter-anyblok-project
-.. _`audreyr/cookiecutter`: https://github.com/audreyr/cookiecutter
 
+.. _II: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/01_external_blok.html
+.. _II_setup-project: https://github.com/AnyBlok/anyblok-book-examples/tree/II_setup-project
+.. |II-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=II_setup-project
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |II-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=II_setup-project
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=II_setup-project
+    :alt: Coverage
+
+.. _III-01: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/01_external_blok.html
+.. _III-01_external-blok: https://github.com/AnyBlok/anyblok-book-examples/tree/III-01_external-blok
+.. |III-01-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-01_external-blok
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |III-01-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-01_external-blok
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-01_external-blok
+    :alt: Coverage
+
+.. _III-02: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/02_extend_blok.html
+.. _III-02_extend-blok: https://github.com/AnyBlok/anyblok-book-examples/tree/III-02_extend-blok
+.. |III-02-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-02_extend-blok
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |III-02-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-02_extend-blok
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-02_extend-blok
+    :alt: Coverage
+
+.. _III-03: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/02_extend_blok.html
+.. _III-03_create-model: https://github.com/AnyBlok/anyblok-book-examples/tree/III-03_create-model
+.. |III-03-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-03_create-model
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |III-03-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-03_create-model
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-03_create-model
+    :alt: Coverage
+
+.. _III-04: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/02_extend_blok.html
+.. _III-04_mixins: https://github.com/AnyBlok/anyblok-book-examples/tree/III-04_mixins
+.. |III-04-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-04_mixins
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |III-04-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-04_mixins
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-04_mixins
+    :alt: Coverage
