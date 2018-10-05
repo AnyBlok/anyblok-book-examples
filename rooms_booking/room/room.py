@@ -10,12 +10,13 @@ from anyblok import Declarations
 from anyblok.column import String, Integer
 
 Model = Declarations.Model
+Mixin = Declarations.Mixin
+
 register = Declarations.register
 
 
 @register(Model)
-class Room:
+class Room(Mixin.IdColumn, Mixin.TrackModel):
 
-    id = Integer(primary_key=True)
     name = String(label="Room name", nullable=False, index=True)
     capacity = Integer(label="Capacity", nullable=False)

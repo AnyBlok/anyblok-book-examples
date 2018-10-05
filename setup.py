@@ -29,6 +29,7 @@ requirements = [
     'psycopg2',
     'anyblok_pyramid',
     'anyblok_address',
+    'anyblok_mixins',
 ]
 
 test_requirements = [
