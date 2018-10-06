@@ -25,6 +25,7 @@ setup-tests: ## install python project dependencies for tests
 	anyblok_createdb -c app.test.cfg || anyblok_updatedb -c app.test.cfg
 
 setup-dev: ## install python project dependencies for development
+	pip install --upgrade pip wheel
 	pip install -r requirements.dev.txt
 	python setup.py develop
 	anyblok_createdb -c app.dev.cfg || anyblok_updatedb -c app.dev.cfg

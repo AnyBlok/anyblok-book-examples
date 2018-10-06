@@ -45,7 +45,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         response = self.webserver.post_json(
             '/api/v1/addresses',
             _ADDRESS,
-            headers=self.headers
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json_body.get('first_name'), 'John')
@@ -55,7 +54,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.post_json(
             '/api/v1/addresses',
             dict(),
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -70,7 +68,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.post_json(
             '/api/v1/addresses',
             address_with_bad_column,
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -85,7 +82,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.post_json(
             '/api/v1/addresses',
             address_with_bad_value_type,
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -98,7 +94,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         address = self.create_address()
         response = self.webserver.get(
             '/api/v1/addresses',
-            headers=self.headers,
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json_body), 1)
@@ -109,7 +104,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         address = self.create_address()
         response = self.webserver.get(
             '/api/v1/addresses/%s' % address.uuid,
-            headers=self.headers
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json_body.get('uuid'), str(address.uuid))
@@ -118,7 +112,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         """Address GET with bad path /api/v1/addresses/x"""
         fail = self.webserver.get(
             '/api/v1/addresses/x',
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -137,7 +130,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         response = self.webserver.put_json(
             '/api/v1/addresses/%s' % address.uuid,
             put_data,
-            headers=self.headers
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json_body.get('uuid'), str(address.uuid))
@@ -152,7 +144,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.put_json(
             '/api/v1/addresses/x',
             put_data,
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -169,7 +160,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.put_json(
             '/api/v1/addresses/%s' % address.uuid,
             put_data,
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -187,7 +177,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         response = self.webserver.patch_json(
             '/api/v1/addresses/%s' % address.uuid,
             patch_data,
-            headers=self.headers
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json_body.get('uuid'), str(address.uuid))
@@ -202,7 +191,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.patch_json(
             '/api/v1/addresses/x',
             patch_data,
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -219,7 +207,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         fail = self.webserver.patch_json(
             '/api/v1/addresses/%s' % address.uuid,
             patch_data,
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
@@ -232,7 +219,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         address = self.create_address()
         response = self.webserver.delete_json(
             '/api/v1/addresses/%s' % address.uuid,
-            headers=self.headers
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json_body), 0)
@@ -242,7 +228,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
         """Address DELETE with bad path /api/v1/addresses/x"""
         fail = self.webserver.patch_json(
             '/api/v1/addresses/x',
-            headers=self.headers,
             status=400
         )
         self.assertEqual(fail.status_code, 400)
