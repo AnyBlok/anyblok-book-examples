@@ -26,7 +26,7 @@ install:
   # only eggs: do an erreur with wheel
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7-dev' ]]; then pip install python_editor texttable PyYAML; fi
   - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
-  - make setup-test
+  - make setup-tests
 
 script:
   - flake8 rooms_booking --ignore F999
