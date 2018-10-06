@@ -1,0 +1,383 @@
+Metadata-Version: 2.1
+Name: anyblok-pyramid
+Version: 0.9.2
+Summary: Web Server Pyramid for AnyBlok
+Home-page: http://docs.anyblok-pyramid.anyblok.org/0.9.2
+Author: Jean-Sébastien Suzanne
+Author-email: jssuzanne@anybox.fr
+License: MPL2
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Framework :: Pyramid
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Server
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Requires-Dist: anyblok (>=0.9.0)
+Requires-Dist: pyramid
+Requires-Dist: pyramid-tm
+Requires-Dist: zope.sqlalchemy
+Requires-Dist: passlib
+
+.. This file is a part of the AnyBlok / Pyramid project
+..
+..    Copyright (C) 2015 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+.. image:: https://travis-ci.org/AnyBlok/Anyblok_Pyramid.svg?branch=master
+    :target: https://travis-ci.org/AnyBlok/Anyblok_Pyramid
+    :alt: Build status
+
+.. image:: https://coveralls.io/repos/github/AnyBlok/Anyblok_Pyramid/badge.svg?branch=master
+    :target: https://coveralls.io/github/AnyBlok/Anyblok_Pyramid?branch=master
+    :alt: Coverage
+
+.. image:: https://img.shields.io/pypi/v/Anyblok_Pyramid.svg
+   :target: https://pypi.python.org/pypi/Anyblok_Pyramid/
+   :alt: Version status
+
+.. image:: https://readthedocs.org/projects/anyblok-pyramid/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://doc.anyblok-pyramid.anyblok.org/en/latest/?badge=latest
+
+
+AnyBlok / Pyramid
+=================
+
+AnyBlok / Pyramid make the link between `AnyBlok <http://doc.anyblok.org>`_ and
+`Pyramid <http://pyramid.readthedocs.org/>`_
+
+AnyBlok / Pyramid is released under the terms of the `Mozilla Public License`.
+
+See the `latest documentation <http://doc.anyblok-pyramid.anyblok.org/>`_
+
+.. This file is a part of the AnyBlok / Pyramid project
+..
+..    Copyright (C) 2015 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..    Copyright (C) 2016 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..    Copyright (C) 2017 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+Front Matter
+============
+
+Information about the AnyBlok / Pyramid project.
+
+Project Homepage
+----------------
+
+AnyBlok is hosted on `github <http://github.com>`_ - the main project
+page is at https://githusb.com/AnyBlok/AnyBlok_Pyramid. Source code is
+tracked here using `GIT <https://git-scm.com>`_.
+
+Releases and project status are available on Pypi at
+http://pypi.python.org/pypi/anyblok_pyramid.
+
+The most recent published version of this documentation should be at
+http://doc.anyblok-pyramid.anyblok.org.
+
+Project Status
+--------------
+
+AnyBlok with Pyramid is currently in beta status and is expected to be fairly
+stable.   Users should take care to report bugs and missing features on an as-needed
+basis.  It should be expected that the development version may be required
+for proper implementation of recently repaired issues in between releases;
+the latest master is always available at http://bitbucket.org/jssuzanne/anyblok_pyramid/get/default.tar.gz.
+
+Installation
+------------
+
+Install released versions of AnyBlok from the Python package index with
+`pip <http://pypi.python.org/pypi/pip>`_ or a similar tool::
+
+    pip install anyblok_pyramid
+
+Installation via source distribution is via the ``setup.py`` script::
+
+    python setup.py install
+
+Installation will add the ``anyblok`` commands to the environment.
+
+Unit Test
+---------
+
+Run the test with ``nose``::
+
+    pip install nose
+    nosetests anyblok_pyramid/tests
+
+Dependencies
+------------
+
+AnyBlok works with **Python 3.3** and later. The install process will
+ensure that `AnyBlok <http://doc.anyblok.org>`_,
+`Pyramid <http://pyramid.readthedocs.org/>`_ are installed, in addition to
+other dependencies. The latest version of them is strongly recommended.
+
+
+Contributing (hackers needed!)
+------------------------------
+
+Anyblok / Pyramid is at a very early stage, feel free to fork, talk with core
+dev, and spread the word!
+
+Author
+------
+
+Jean-Sébastien Suzanne
+
+Contributors
+------------
+
+`Anybox <http://anybox.fr>`_ team:
+
+* Georges Racinet
+* Jean-Sébastien Suzanne
+* Simon André
+* Pierre Verkest
+
+`Sensee <http://sensee.com>`_ team:
+
+* Franck Bret
+
+Bugs
+----
+
+Bugs and feature enhancements to AnyBlok should be reported on the `Issue
+tracker <https://bitbucket.org/jssuzanne/anyblok_pyramid/issues>`_.
+
+.. This file is a part of the AnyBlok / Pyramid project
+..
+..    Copyright (C) 2015 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..    Copyright (C) 2016 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..    Copyright (C) 2017 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..    Copyright (C) 2018 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+CHANGELOG
+=========
+
+
+0.9.2 (2018-08-10)
+------------------
+
+* Fix get_acl method
+* Add max age for static path, issue #13
+
+0.9.1 (2018-05-30)
+------------------
+
+* Fix get_acl method
+* Update logging output
+
+0.9.0 (2018-02-27)
+------------------
+
+* [FIX] commited session with pyramid
+* [ADD] Authentication configuration
+* [ADD] **auth** blok
+* [ADD] **auth-password** blok
+* [ADD] **authorization** blok
+* [FIX] console script whith gunicorn and wsgi server
+  Put all the serveur in loadwithoutmigration=True, AnyBlok can add some
+  lock during the migration and must do in specal action
+
+0.8.2 (2017-12-23)
+------------------
+
+* [FIX] anyblok cache invalidation
+* [FIX] replace SQLAlchemy deprecated extension by session events
+
+0.8.1 (2017-11-28)
+------------------
+
+* [REF] replace the overload of ``init_registry`` by ``init_registry_with_bloks``
+
+0.8.0 (2017-10-14)
+------------------
+
+* [DEL] Remove configuration group definition ``preload``
+* [REF] use ``configuration_post_load`` function to initialize services
+
+0.7.2 (2017-10-18)
+------------------
+
+* [ADD] Some apdater to convert to json
+
+  - datetime_adapter
+  - date_adapter
+  - decimal_adapter
+  - uuid_adapter
+  - bytes_adapter
+
+0.7.1 (2016-12-05)
+------------------
+
+* [FIX] add pluggins in autoload configuration for unittest
+* [FIX] type replace asset by assert
+* [FIX] fix gunicorn script, load the plugins config part
+
+0.7.0 (2016-07-11)
+------------------
+
+* [FIX] Adapte for new release of AnyBlok 0.9.0
+* [Add] Plugin get_db_name
+* [ADD] some unittest
+* [REF] Update doc
+
+0.6.3 (2016-06-20)
+------------------
+
+* [FIX] bad release for 0.6.2
+
+0.6.2 (2016-06-20)
+------------------
+
+* [FIX] utf-8 encoding in setup, need for readthedocs
+* [REF] move from bitbucket (mercurial) to github (git)
+
+0.6.1 (2016-04-18)
+------------------
+
+* [FIX] for Python < 3.5
+
+0.6.0 (2016-04-18)
+------------------
+
+.. warning::
+
+    This version break the compatibility with previous version. The goal
+    is to use all the functionnality of pyramid, and give the tools to make
+    the bind with AnyBlok easily
+
+* [REM] remove old Controller declarations:
+   * Declarations.Pyramid
+   * Declarations.PyramidHTTP
+   * Declarations.PyramidJSONRPC
+   * Declarations.PyramidXMLRPC
+* [ADD] add anyblok request property
+  ::
+
+      registry = request.anyblok.registry
+
+* [ADD] installed_blok predicate for route and view
+  ::
+
+      @view_config(route_name='hello', installed_blok='my-blok')
+      def say_hello(request):
+          ...
+
+* [ADD] need_anyblok_registry predicate for route and view
+  ::
+
+      @view_config(route_name='hello', need_anyblok_registry=True)
+      def say_hello(request):
+          ...
+
+
+0.5.3 (2016-03-17)
+------------------
+
+* [REF] Preload database, add log and check if the database exist before load
+  it
+* [FIX] catch simple exception to reput in real rpc exception
+
+0.5.2 (2016-01-15)
+------------------
+
+* [FIX] use anyblok parser for config with gunicorn
+* [REF] entry point init is now in anyblok
+
+0.5.1 (2016-01-08)
+------------------
+
+* [REF] Adapt with the new version of AnyBlok
+* [IMP] Add new entry point to load function before load AnyBlok bloks
+
+0.5.0 (2016-01-07)
+------------------
+
+* [ADD] pyramid_pm and zope.sqlalchemy to isolate each controller call
+
+0.4.1 (2015-10-9)
+-----------------
+
+* [ADD] console script, implementation with gunicorn only
+* [ADD] wsgi script to give un app for wsgi server
+
+0.4.0 (2015-08-25)
+------------------
+
+.. warning::
+
+    this version can not be capable with the previous version
+
+.. note::
+
+    Works only with AnyBlok 0.5.1 and after
+
+* [REF] Add entry point to add new pyramid includeme and settings
+* [DEL] properties decorator, it is useless because pyramid have a better
+  behaviour
+* [REF] add workingset to define overwritable callback used for application,
+  no for the blok, add first callback, get_registry
+* [REF] unit test cause of new version of AnyBlok 0.5.0
+* [FIX] unit test case, update controller to unload the declaration when
+  BlokManager are unloaded
+
+0.3.2 (2015-06-22)
+------------------
+
+* [REF] cause of upgrade version of AnyBlok 0.4.0
+
+0.3.1 (2015-05-04)
+------------------
+
+* [FIX] default value for beaker, None is better than ''
+
+0.3.0 (2015-05-04)
+------------------
+
+* [IMP] console script argsparse for pyramid and beaker
+* [ADD] MANIFEST.in
+* [FIX] script cause of remove logging configuration from AnyBlok
+
+0.2.0 (2015-03-15)
+------------------
+
+* [ADD] configurator callable
+* [REF] Adapt the import of python module of the blok, cause of the change in
+  AnyBlok version 0.2.2
+
+
+0.1.0 (2015-02-07)
+------------------
+
+Main version of AnyBlok / Pyramid. You can with this version
+
+* Declare Views / Routes for application
+* Declare controller (Views / Routes) which depend of the installation of bloks
+    * XHR
+    * JsonRPC
+    * XmlRPC
+* Possibility to check some property as authentification
+* Possibility to define properties check
+
+

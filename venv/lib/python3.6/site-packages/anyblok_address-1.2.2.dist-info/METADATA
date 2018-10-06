@@ -1,0 +1,124 @@
+Metadata-Version: 2.1
+Name: anyblok-address
+Version: 1.2.2
+Summary: Address management
+Home-page: http://docs.anyblok-address.anyblok.org/1.2.2
+Author: Franck Bret, Hugo Quezada
+Author-email: f.bret@sensee.com, h.quezada@sensee.com
+License: UNKNOWN
+Keywords: anyblok_address
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: anyblok
+Requires-Dist: anyblok-mixins
+Requires-Dist: pycountry
+Requires-Dist: phonenumbers
+
+.. This file is a part of the AnyBlok project
+..
+..    Copyright (C) 2014 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+.. image:: https://travis-ci.org/AnyBlok/anyblok_address.svg?branch=master
+    :target: https://travis-ci.org/AnyBlok/anyblok_address
+    :alt: Build status
+
+.. image:: https://coveralls.io/repos/github/AnyBlok/anyblok_address/badge.svg?branch=master
+    :target: https://coveralls.io/github/AnyBlok/anyblok_address?branch=master
+    :alt: Coverage
+
+.. image:: https://img.shields.io/pypi/v/anyblok_address.svg
+   :target: https://pypi.python.org/pypi/anyblok_address/
+   :alt: Version status
+
+.. image:: https://readthedocs.org/projects/anyblok-address/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://anyblok-address.readthedocs.io/en/latest/
+
+
+===============
+Anyblok Address
+===============
+
+Address management
+
+AnyBlok is released under the terms of the `Mozilla Public License`.
+
+See the `latest documentation <http://doc.anyblok-address.anyblok.org>`_
+
+
+Features
+--------
+
+* TODO
+
+Author
+------
+
+Franck Bret
+f.bret@sensee.com
+https://github.com/franckbret
+
+Hugo Quezada
+h.quezada@sensee.com
+https://github.com/gohuhq
+
+Contributors
+------------
+
+Jean-Sebastien Suzanne
+jssuzanne@anybox.fr
+https://github.com/jssuzanne
+
+Credits
+-------
+
+.. _`anyblok_address`: https://github.com/AnyBlok/anyblok_address
+
+
+==========
+Change Log
+==========
+
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+1.2.2 (2018-10-06)
+------------------
+
+* Removed VERSION file, the version is filled directly in setup.py
+
+1.2.1 (2018-05-30)
+------------------
+
+* Update dépendencies AnyBlok and anyblok_io
+
+1.2.0 (2018-05-23)
+------------------
+
+* Add **Mixin.BooleanReadOnly** on address model
+
+1.1.0 (2018-05-16)
+------------------
+
+* Use latest, newest columns from AnyBlok: Country, PhoneNumber, Email
+
+1.0.0 (2018-03-07)
+------------------
+
+Main version of Anyblok Address. What is available with this version:
+
+* A basic address model ready to use
+
+

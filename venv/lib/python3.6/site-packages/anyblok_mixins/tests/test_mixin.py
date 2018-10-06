@@ -1,0 +1,323 @@
+# This file is a part of the AnyBlok project
+#
+#    Copyright (C) 2014 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+#    Copyright (C) 2017 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License,
+# v. 2.0. If a copy of the MPL was not distributed with this file,You can
+# obtain one at http://mozilla.org/MPL/2.0/.
+from anyblok.tests.testcase import DBTestCase
+from anyblok import Declarations
+from anyblok.column import Integer, String, Boolean
+from anyblok_mixins.mixins.exceptions import (
+    ForbidDeleteException, ForbidUpdateException
+)
+register = Declarations.register
+unregister = Declarations.unregister
+Mixin = Declarations.Mixin
+Model = Declarations.Model
+
+
+class TestMixin(DBTestCase):
+
+    def init_registry(self, func):
+        return self.init_registry_with_bloks(('anyblok-mixins',), func)
+
+    def test_forbidden_delete(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ForbidDelete):
+
+                id = Integer(primary_key=True)
+
+        registry = self.init_registry(add_in_registry)
+        t = registry.Test.insert()
+        with self.assertRaises(ForbidDeleteException):
+            t.delete()
+
+    def test_forbidden_update(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ForbidUpdate):
+
+                id = Integer(primary_key=True)
+                name = String()
+
+        registry = self.init_registry(add_in_registry)
+        t = registry.Test.insert()
+        t.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def test_readonly_delete(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ReadOnly):
+
+                id = Integer(primary_key=True)
+
+        registry = self.init_registry(add_in_registry)
+        t = registry.Test.insert()
+        with self.assertRaises(ForbidDeleteException):
+            t.delete()
+
+    def test_readonly_update(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ReadOnly):
+
+                id = Integer(primary_key=True)
+                name = String()
+
+        registry = self.init_registry(add_in_registry)
+        t = registry.Test.insert()
+        t.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def test_conditional_forbidden_delete(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ConditionalForbidDelete):
+
+                id = Integer(primary_key=True)
+                forbid_delete = Boolean(default=False)
+
+                def check_if_forbid_delete_condition_is_true(self):
+                    return self.forbid_delete
+
+        registry = self.init_registry(add_in_registry)
+        t1 = registry.Test.insert()
+        t2 = registry.Test.insert(forbid_delete=True)
+        t1.delete()
+
+        with self.assertRaises(ForbidDeleteException):
+            t2.delete()
+
+    def test_conditional_forbidden_delete_mission_method(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ConditionalForbidDelete):
+
+                id = Integer(primary_key=True)
+
+        registry = self.init_registry(add_in_registry)
+        t = registry.Test.insert()
+        with self.assertRaises(ForbidDeleteException):
+            t.delete()
+
+    def test_conditional_forbidden_update_missing_method(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ConditionalForbidUpdate):
+
+                id = Integer(primary_key=True)
+                name = String()
+
+        registry = self.init_registry(add_in_registry)
+        t = registry.Test.insert()
+        t.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def test_conditional_forbidden_update(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.ConditionalForbidUpdate):
+
+                id = Integer(primary_key=True)
+                forbid_update = Boolean(default=False)
+                name = String()
+
+                def check_if_forbid_update_condition_is_true(self, **changed):
+                    return self.forbid_update
+
+        registry = self.init_registry(add_in_registry)
+        t1 = registry.Test.insert()
+        t1.name = 'test'
+        registry.flush()
+        t2 = registry.Test.insert(forbid_update=True)
+        t2.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def add_in_registry_conditional_readonly(self):
+
+        @register(Model)
+        class Test(Mixin.ConditionalReadOnly):
+
+            id = Integer(primary_key=True)
+            readonly = Boolean(default=False)
+            name = String()
+
+            def check_if_forbid_update_condition_is_true(self,
+                                                         **previous_values):
+                return previous_values.get('readonly', self.readonly)
+
+            def check_if_forbid_delete_condition_is_true(self):
+                return self.readonly
+
+    def test_conditional_readonly_delete(self):
+        registry = self.init_registry(self.add_in_registry_conditional_readonly)
+        t1 = registry.Test.insert()
+        t1.delete()
+        t2 = registry.Test.insert(readonly=True)
+        with self.assertRaises(ForbidDeleteException):
+            t2.delete()
+
+    def test_conditional_readonly_update(self):
+        registry = self.init_registry(self.add_in_registry_conditional_readonly)
+        t1 = registry.Test.insert()
+        t1.name = 'test'
+        registry.flush()
+        t2 = registry.Test.insert(readonly=True)
+        t2.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def test_boolean_forbidden_delete(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.BooleanForbidDelete):
+
+                id = Integer(primary_key=True)
+
+        registry = self.init_registry(add_in_registry)
+        t1 = registry.Test.insert()
+        t2 = registry.Test.insert(forbid_delete=True)
+        t1.delete()
+
+        with self.assertRaises(ForbidDeleteException):
+            t2.delete()
+
+    def test_boolean_forbidden_update(self):
+
+        def add_in_registry():
+
+            @register(Model)
+            class Test(Mixin.BooleanForbidUpdate):
+
+                id = Integer(primary_key=True)
+                name = String()
+
+        registry = self.init_registry(add_in_registry)
+        t1 = registry.Test.insert()
+        t1.name = 'test'
+        registry.flush()
+        t2 = registry.Test.insert(forbid_update=True)
+        t2.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def add_in_registry_boolean_readonly(self):
+
+        @register(Model)
+        class Test(Mixin.BooleanReadOnly):
+
+            id = Integer(primary_key=True)
+            name = String()
+
+    def test_boolean_readonly_delete(self):
+        registry = self.init_registry(self.add_in_registry_boolean_readonly)
+        t1 = registry.Test.insert()
+        t1.delete()
+        t2 = registry.Test.insert(readonly=True)
+        with self.assertRaises(ForbidDeleteException):
+            t2.delete()
+
+    def test_boolean_readonly_update(self):
+        registry = self.init_registry(self.add_in_registry_boolean_readonly)
+        t1 = registry.Test.insert()
+        t1.name = 'test'
+        registry.flush()
+        t2 = registry.Test.insert(readonly=True)
+        t2.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def add_in_registry_state_readonly(self):
+
+        @register(Model)
+        class Test(Mixin.StateReadOnly):
+            DEFAULT_STATE = 'draft'
+
+            @classmethod
+            def get_states(cls):
+                return {
+                    'draft': 'Draft',
+                    'started': 'Started',
+                    'done': 'Done',
+                }
+
+            def check_if_forbid_update_condition_is_true(self, **changed):
+                if 'state' in changed:
+                    return False
+
+                return self.state == 'done'
+
+            def check_if_forbid_delete_condition_is_true(self):
+                return self.state != 'draft'
+
+            id = Integer(primary_key=True)
+            name = String()
+
+    def test_state_readonly_delete_1(self):
+        registry = self.init_registry(self.add_in_registry_state_readonly)
+        t = registry.Test.insert()
+        t.delete()
+
+    def test_state_readonly_delete_2(self):
+        registry = self.init_registry(self.add_in_registry_state_readonly)
+        t = registry.Test.insert(state='started')
+        with self.assertRaises(ForbidDeleteException):
+            t.delete()
+
+    def test_state_readonly_delete_3(self):
+        registry = self.init_registry(self.add_in_registry_state_readonly)
+        t = registry.Test.insert(state='done')
+        with self.assertRaises(ForbidDeleteException):
+            t.delete()
+
+    def test_state_readonly_update_1(self):
+        registry = self.init_registry(self.add_in_registry_state_readonly)
+        t1 = registry.Test.insert()
+        t1.name = 'test'
+        registry.flush()
+
+    def test_state_readonly_update_2(self):
+        registry = self.init_registry(self.add_in_registry_state_readonly)
+        t = registry.Test.insert(state='done')
+        t.name = 'test'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()
+
+    def test_state_readonly_update_3(self):
+        registry = self.init_registry(self.add_in_registry_state_readonly)
+        t = registry.Test.insert()
+        t.name = 'test1'
+        t.state = 'started'
+        registry.flush()
+        t.name = 'test2'
+        t.state = 'done'
+        registry.flush()
+        t.name = 'test3'
+        with self.assertRaises(ForbidUpdateException):
+            registry.flush()

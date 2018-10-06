@@ -1,0 +1,3 @@
+[bloks]
+address = anyblok_address.bloks.address:AddressBlok
+

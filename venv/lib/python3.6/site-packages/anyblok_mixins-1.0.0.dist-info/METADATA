@@ -1,0 +1,124 @@
+Metadata-Version: 2.1
+Name: anyblok-mixins
+Version: 1.0.0
+Summary: add business mixins
+Home-page: http://docs.anyblok.org/1.0.0
+Author: Jean-Sébastien Suzanne
+Author-email: jssuzanne@anybox.fr
+License: MPL2
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Requires-Dist: anyblok
+
+.. This file is a part of the AnyBlok project
+..
+..    Copyright (C) 2014 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+.. image:: https://travis-ci.org/AnyBlok/anyblok_mixins.svg?branch=master
+    :target: https://travis-ci.org/AnyBlok/anyblok_mixins
+    :alt: Build status
+
+.. image:: https://coveralls.io/repos/github/AnyBlok/anyblok_mixins/badge.svg?branch=master
+    :target: https://coveralls.io/github/AnyBlok/anyblok_mixins?branch=master
+    :alt: Coverage
+
+.. image:: https://img.shields.io/pypi/v/anyblok_mixins.svg
+   :target: https://pypi.python.org/pypi/anyblok/
+   :alt: Version status
+
+.. image:: https://readthedocs.org/projects/anyblok_mixins/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://doc.anyblok.org/en/latest/?badge=latest
+
+AnyBlok
+=======
+
+Add some mixins to help implementation of business models
+
+.. This file is a part of the AnyBlok project
+..
+..    Copyright (C) 2015 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..    Copyright (C) 2016 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+.. AnyBlok documentation master file, created by
+   sphinx-quickstart on Mon Feb 24 10:12:33 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+.. contents::
+
+Front Matter
+============
+
+Information about the AnyBlok project.
+
+Installation
+------------
+
+Install released versions of AnyBlok from the Python package index with 
+`pip <http://pypi.python.org/pypi/pip>`_ or a similar tool::
+
+    pip install anyblok_mixins
+
+Installation via source distribution is via the ``setup.py`` script::
+
+    python setup.py install
+
+Running Tests
+-------------
+
+To run framework tests with ``nose``::
+
+    pip install nose
+    nosetests anyblok_mixins/tests
+
+
+Contributing (hackers needed!)
+------------------------------
+
+Anyblok is at a very early stage, feel free to fork, talk with core dev, and spread the word!
+
+Author
+------
+
+Jean-Sébastien Suzanne
+
+.. This file is a part of the AnyBlok project
+..
+..    Copyright (C) 2018 Jean-Sebastien SUZANNE <jssuzanne@anybox.fr>
+..
+.. This Source Code Form is subject to the terms of the Mozilla Public License,
+.. v. 2.0. If a copy of the MPL was not distributed with this file,You can
+.. obtain one at http://mozilla.org/MPL/2.0/.
+
+CHANGELOG
+=========
+
+1.0.0 (2018-05-29)
+------------------
+
+* Cherry pick mixins from anyblok-core
+* Add SchemaValidator method
+* Add basic mixins 
+
+

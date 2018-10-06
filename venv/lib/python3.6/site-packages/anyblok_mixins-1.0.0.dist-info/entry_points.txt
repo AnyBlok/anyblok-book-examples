@@ -1,0 +1,4 @@
+[bloks]
+anyblok-mixins = anyblok_mixins.mixins:AnyBlokMixins
+anyblok-workflow = anyblok_mixins.workflow:AnyBlokWorkFlow
+
