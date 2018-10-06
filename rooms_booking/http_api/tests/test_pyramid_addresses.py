@@ -25,16 +25,6 @@ class TestApiAddressesBase(PyramidBlokTestCase):
     """ Address test class throught rest api
     """
 
-    def setUp(self):
-        super(TestApiAddressesBase, self).setUp()
-        self.user = self.registry.User.insert(
-            email='t@t', login='test', first_name='test', last_name='test')
-        self.registry.User.CredentialStore.insert(
-            login='test', password='testpassword')
-        resp = self.webserver.post_json(
-            '/api/v1/login', {'login': 'test', 'password': 'testpassword'})
-        self.headers = {"cookie": resp.headers["Set-Cookie"]}
-
     def create_address(self):
         """Create a dummy address record"""
         address = self.registry.Address.insert(
