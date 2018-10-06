@@ -91,13 +91,11 @@ class TestApiAddressesBase(PyramidBlokTestCase):
 
     def test_addresses_get(self):
         """Address GET /api/v1/addresses"""
-        address = self.create_address()
         response = self.webserver.get(
             '/api/v1/addresses',
         )
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json_body), 1)
-        self.assertEqual(response.json_body[0].get('uuid'), str(address.uuid))
+        self.assertEqual(len(response.json_body), 3)
 
     def test_address_get(self):
         """Address GET /api/v1/addresses/{{ uuid }}"""

@@ -15,12 +15,6 @@ matrix:
     - python: "3.7-dev"
     - python: "nightly"
 
-env:
-  global:
-    - ANYBLOK_DATABASE_NAME=travis_ci_test
-    - ANYBLOK_DATABASE_DRIVER=postgresql
-    - ANYBLOK_DATABASE_USER=postgres
-
 virtualenv:
   system_site_packages: false
 
@@ -34,16 +28,11 @@ install:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7-dev' ]]; then pip install python_editor texttable PyYAML; fi
   - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
   # only wheel
-  - pip install wheel
-  - pip install -r requirements.test.txt
-  - pip install nose
-  - pip install coveralls
-  - pip install .
+  - make setup-dev
 
 script:
   - flake8 rooms_booking --ignore F999
-  - anyblok_createdb --install-all-bloks
-  - nosetests rooms_booking --with-anyblok-bloks -v -s --with-coverage --cover-package=rooms_booking
+  - make test
 
 after_success:
   coveralls

@@ -52,7 +52,7 @@ lint: ## check style with flake8
 	flake8 rooms_booking
 
 test: ## run anyblok nose tests
-	anyblok_nose -c app.test.cfg -- -v -s rooms_booking
+	nosetests rooms_booking --with-anyblok-bloks --anyblok-configfile app.test.cfg -v -s --with-coverage --cover-package=rooms_booking
 
 documentation: ## generate documentation
 	anyblok_doc -c app.test.cfg --doc-format RST --doc-output doc/source/apidoc.rst

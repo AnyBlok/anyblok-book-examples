@@ -21,6 +21,7 @@ with open(os.path.join(
     changelog = changelog_file.read()
 
 requirements = [
+    'sqlalchemy',
     'anyblok',
     'psycopg2',
     'anyblok_pyramid',
