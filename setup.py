@@ -25,6 +25,7 @@ with open(
     version = version_file.read().strip()
 
 requirements = [
+    'sqlalchemy',
     'anyblok',
     'psycopg2',
     'anyblok_pyramid',
