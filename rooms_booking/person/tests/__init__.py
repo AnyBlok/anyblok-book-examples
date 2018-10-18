@@ -1,5 +1,6 @@
 # This file is a part of the AnyBlok / book examples project
 #
+#    Copyright (C) 2018 Hugo Quezada <h.quezada@sensee.com>
 #    Copyright (C) 2018 Pierre Verkest <pverkest@anybox.fr>
 #
 # This Source Code Form is subject to the terms of the Mozilla Public License,
