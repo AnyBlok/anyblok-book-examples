@@ -15,6 +15,7 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
+
 setup: ## install python project dependencies
 	pip install --upgrade pip wheel
 	pip install .
