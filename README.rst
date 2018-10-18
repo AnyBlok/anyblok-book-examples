@@ -21,6 +21,7 @@ Here the state of each branch
  III-03_   III-03_create-model_      |III-03-travis|   |III-03-coverage|
  III-04_   III-04_mixins_            |III-04-travis|   |III-04-coverage|
  III-05_   III-05_link-models_       |III-05-travis|   |III-05-coverage|
+ III-06_   III-06_polymorphism_      |III-06-travis|   |III-06-coverage|
  ========= ========================= ================= ===================
 
 
@@ -30,7 +31,8 @@ Authors
 -------
 
 * Pierre Verkest
-
+* Hugo Quezada
+* Jean-Sébastien Suzanne
 
 
 .. _II: https://anyblok.gitbooks.io/anyblok-book/content/en/02_project/
@@ -85,4 +87,13 @@ Authors
     :alt: Build status
 .. |III-05-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-05_link-models
     :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-05_link-models
+    :alt: Coverage
+
+.. _III-06: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/06_polymorphism.html
+.. _III-06_polymorphism: https://github.com/AnyBlok/anyblok-book-examples/tree/III-06_polymorphism
+.. |III-06-travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=III-06_polymorphism
+    :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
+    :alt: Build status
+.. |III-06-coverage| image:: https://coveralls.io/repos/github/AnyBlok/anyblok-book-examples/badge.svg?branch=III-06_polymorphism
+    :target: https://coveralls.io/github/AnyBlok/anyblok-book-examples?branch=III-06_polymorphism
     :alt: Coverage
