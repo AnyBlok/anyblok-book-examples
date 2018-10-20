@@ -51,7 +51,7 @@ class TestUniversity(BlokTestCase):
         )
 
     def test_create_university_with_exinsting_address(self):
-        self.registry.University.insert(
+        univ = self.registry.University.insert(
             name="College 2",
-            addresses=[self.an_address]
         )
+        univ.addresses.append(self.an_address)

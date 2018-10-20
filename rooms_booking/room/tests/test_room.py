@@ -40,3 +40,29 @@ class TestRoom:
         after_edit = datetime.now(tz=pytz.timezone(time.tzname[0]))
         assert before_create <= room.create_date <= after_create
         assert after_create <= room.edit_date <= after_edit
+
+    def test_change_addresses(self, rollback_registry, an_address):
+        registry = rollback_registry
+        an_other_address = registry.Address.insert(
+            first_name="Campus de Carcassonne",
+            last_name="Université de Perpignan",
+            street1="Statistique et Traitement Informatique des Données",
+            street2="2535 Route de Saint-Hilaire",
+            zip_code="11000",
+            city="Carcassonne",
+            country="FRA",
+            access="Kick the door to open it!"
+        )
+        roomA2 = registry.Room.insert(
+            name="A2",
+            capacity=32,
+            address=an_address,
+        )
+        roomA3 = registry.Room.insert(
+            name="A3",
+            capacity=32,
+            address=an_address,
+        )
+        an_other_address.rooms.extend([roomA2, roomA3])
+        assert len(an_other_address.rooms) == 2
+        assert len(an_address.rooms) == 0
