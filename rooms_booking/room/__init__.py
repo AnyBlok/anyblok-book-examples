@@ -46,5 +46,5 @@ class Room(Blok):
             zip_code="75230",
             city="Paris cedex 05",
             country="FRA",
-            access="Crie fort pour réveiller le consièrge"
+            access="Crie fort pour réveiller le concierge"
         )
