@@ -6,7 +6,7 @@
 from setuptools import setup, find_packages
 import os
 
-
+version = "0.1.0"
 here = os.path.abspath(os.path.dirname(__file__))
 
 with open(
@@ -14,20 +14,15 @@ with open(
 ) as readme_file:
     readme = readme_file.read()
 
-with open(os.path.join(
-    here, 'CHANGELOG.rst'), 'r', encoding='utf-8'
+with open(
+    os.path.join(here, 'CHANGELOG.rst'), 'r', encoding='utf-8'
 ) as changelog_file:
     changelog = changelog_file.read()
-
-with open(
-    os.path.join(here, 'VERSION'), 'r', encoding='utf-8'
-) as version_file:
-    version = version_file.read().strip()
 
 requirements = [
     'sqlalchemy',
     'anyblok',
-    'psycopg2',
+    'psycopg2-binary',
     'anyblok_pyramid',
     'anyblok_address',
 ]
