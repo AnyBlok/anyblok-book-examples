@@ -23,8 +23,5 @@ class TestAddress:
             country="GBR",
             access="Kick the door to open it!"
         )
-        assert (
-            rollback_registry.Address.query().count() ==
-            address_count + 1
-        )
+        assert rollback_registry.Address.query().count() == address_count + 1
         assert queens_college_address.access == "Kick the door to open it!"
