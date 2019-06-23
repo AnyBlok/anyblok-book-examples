@@ -35,14 +35,12 @@ install:
   - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
   # only wheel
   - pip install wheel
-  - pip install -r requirements.test.txt
-  - pip install nose
   - pip install coveralls
+  - make setup-tests
 
 script:
-  - flake8 rooms_booking --ignore F999
-  - anyblok_createdb --install-all-bloks
-  - nosetests rooms_booking --with-anyblok-bloks -v -s --with-coverage --cover-package=rooms_booking
+  - make lint
+  - make test
 
 after_success:
   coveralls
