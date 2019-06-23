@@ -5,16 +5,16 @@
 # This Source Code Form is subject to the terms of the Mozilla Public License,
 # v. 2.0. If a copy of the MPL was not distributed with this file,You can
 # obtain one at http://mozilla.org/MPL/2.0/.
+import pytest
 
-from anyblok.tests.testcase import BlokTestCase
 
-
-class TestAddress(BlokTestCase):
+@pytest.mark.usefixtures('rollback_registry')
+class TestAddress:
     """ Test python api on AnyBlok models"""
 
-    def test_create_address(self):
-        address_count = self.registry.Address.query().count()
-        queens_college_address = self.registry.Address.insert(
+    def test_create_address(self, rollback_registry):
+        address_count = rollback_registry.Address.query().count()
+        queens_college_address = rollback_registry.Address.insert(
             first_name="The Queen's College",
             last_name="University of oxford",
             street1="High Street",
@@ -23,11 +23,8 @@ class TestAddress(BlokTestCase):
             country="GBR",
             access="Kick the door to open it!"
         )
-        self.assertEqual(
-            self.registry.Address.query().count(),
+        assert (
+            rollback_registry.Address.query().count() ==
             address_count + 1
         )
-        self.assertEqual(
-            queens_college_address.access,
-            "Kick the door to open it!"
-        )
+        assert queens_college_address.access == "Kick the door to open it!"

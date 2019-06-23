@@ -2,4 +2,6 @@ flake8
 coverage
 WebTest
 sphinx
+pytest
+pytest-cov
 sphinxcontrib-httpdomain

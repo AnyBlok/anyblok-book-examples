@@ -51,8 +51,8 @@ clean-pyc: ## remove Python file artifacts
 lint: ## check style with flake8
 	flake8 rooms_booking
 
-test: ## run anyblok nose tests
-	nosetests rooms_booking --with-anyblok-bloks --anyblok-configfile app.test.cfg -v -s --with-coverage --cover-package=rooms_booking
+test: ## run pytest
+	ANYBLOK_CONFIG_FILE=app.test.cfg pytest rooms_booking -ra -vv --cov=rooms_booking --cov-report=html
 
 documentation: ## generate documentation
 	anyblok_doc -c app.test.cfg --doc-format RST --doc-output doc/source/apidoc.rst

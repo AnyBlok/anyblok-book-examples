@@ -5,7 +5,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public License,
 # v. 2.0. If a copy of the MPL was not distributed with this file,You can
 # obtain one at http://mozilla.org/MPL/2.0/.
-from anyblok_pyramid.tests.testcase import PyramidBlokTestCase
+import pytest
 
 
 _ADDRESS = dict(
@@ -21,13 +21,14 @@ _ADDRESS = dict(
 )
 
 
-class TestApiAddressesBase(PyramidBlokTestCase):
+@pytest.mark.usefixtures('rollback_registry')
+class TestApiAddressesBase:
     """ Address test class throught rest api
     """
 
-    def create_address(self):
+    def create_address(self, registry):
         """Create a dummy address record"""
-        address = self.registry.Address.insert(
+        return registry.Address.insert(
             first_name="John",
             last_name="Doe",
             street1="1 street",
@@ -38,197 +39,172 @@ class TestApiAddressesBase(PyramidBlokTestCase):
             city="Nowhere",
             country="FRA"
         )
-        return address
 
-    def test_addresses_post(self):
+    def test_addresses_post(self, rollback_registry, webserver):
         """Address POST /api/v1/addresses"""
-        response = self.webserver.post_json(
-            '/api/v1/addresses',
-            _ADDRESS,
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json_body.get('first_name'), 'John')
+        response = webserver.post_json('/api/v1/addresses', [_ADDRESS])
+        assert response.status_code == 200
+        assert response.json_body[0].get('first_name') == 'John'
 
-    def test_addresses_post_fail_empty_body(self):
+    def test_addresses_post_fail_empty_body(self, rollback_registry,
+                                            webserver):
         """Address POST with empty body /api/v1/addresses"""
-        fail = self.webserver.post_json(
-            '/api/v1/addresses',
-            dict(),
-            status=400
-        )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'body')
+        fail = webserver.post_json('/api/v1/addresses', [dict()], status=400)
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'body'
 
-    def test_addresses_post_fail_bad_column(self):
+    def test_addresses_post_fail_bad_column(self, rollback_registry,
+                                            webserver):
         """Address POST with bad column /api/v1/addresses"""
         address_with_bad_column = _ADDRESS.copy()
         address_with_bad_column['bad_column'] = 'colum_value'
-        fail = self.webserver.post_json(
-            '/api/v1/addresses',
-            address_with_bad_column,
-            status=400
-        )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'body')
+        fail = webserver.post_json('/api/v1/addresses',
+                                   [address_with_bad_column], status=400)
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'body'
 
-    def test_addresses_post_fail_bad_value_type(self):
+    def test_addresses_post_fail_bad_value_type(self, rollback_registry,
+                                                webserver):
         """Address POST with bad value type /api/v1/addresses"""
         address_with_bad_value_type = _ADDRESS.copy()
         address_with_bad_value_type['first_name'] = 0
-        fail = self.webserver.post_json(
+        fail = webserver.post_json(
             '/api/v1/addresses',
             address_with_bad_value_type,
             status=400
         )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'body')
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'body'
 
-    def test_addresses_get(self):
+    def test_addresses_get(self, rollback_registry, webserver):
         """Address GET /api/v1/addresses"""
-        response = self.webserver.get(
-            '/api/v1/addresses',
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json_body), 3)
+        response = webserver.get('/api/v1/addresses')
+        assert response.status_code == 200
+        assert len(response.json_body) == 3
 
-    def test_address_get(self):
+    def test_address_get(self, rollback_registry, webserver):
         """Address GET /api/v1/addresses/{{ uuid }}"""
-        address = self.create_address()
-        response = self.webserver.get(
-            '/api/v1/addresses/%s' % address.uuid,
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json_body.get('uuid'), str(address.uuid))
+        address = self.create_address(rollback_registry)
+        response = webserver.get('/api/v1/addresses/%s' % address.uuid)
+        assert response.status_code == 200
+        assert response.json_body.get('uuid') == str(address.uuid)
 
-    def test_address_get_fail_bad_path(self):
+    def test_address_get_fail_bad_path(self, rollback_registry, webserver):
         """Address GET with bad path /api/v1/addresses/x"""
-        fail = self.webserver.get(
-            '/api/v1/addresses/x',
-            status=400
-        )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'path')
+        fail = webserver.get('/api/v1/addresses/x', status=400)
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'path'
 
-    def test_address_put(self):
+    def test_address_put(self, rollback_registry, webserver):
         """Address PUT /api/v1/addresses/{{ uuid }}"""
-        address = self.create_address()
+        address = self.create_address(rollback_registry)
         put_data = _ADDRESS.copy()
         put_data.update(dict(
             first_name='Bob',
             last_name='Plop'
         ))
-        response = self.webserver.put_json(
+        response = webserver.put_json(
             '/api/v1/addresses/%s' % address.uuid,
             put_data,
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json_body.get('uuid'), str(address.uuid))
-        self.assertEqual(response.json_body.get('first_name'), 'Bob')
-        self.assertEqual(response.json_body.get('last_name'), 'Plop')
+        assert response.status_code == 200
+        assert response.json_body.get('uuid') == str(address.uuid)
+        assert response.json_body.get('first_name') == 'Bob'
+        assert response.json_body.get('last_name') == 'Plop'
 
-    def test_address_put_fail_bad_path(self):
+    def test_address_put_fail_bad_path(self, rollback_registry, webserver):
         """Address PUT with bad path /api/v1/addresses/{{ uuid }}"""
         put_data = dict(
             first_name='Bob',
         )
-        fail = self.webserver.put_json(
+        fail = webserver.put_json(
             '/api/v1/addresses/x',
             put_data,
             status=400
         )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'path')
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'path'
 
-    def test_address_put_fail_bad_value_type(self):
+    def test_address_put_fail_bad_value_type(self, rollback_registry,
+                                             webserver):
         """Address PUT with bad value type /api/v1/addresses/{{ uuid }}"""
-        address = self.create_address()
+        address = self.create_address(rollback_registry)
         put_data = dict(
             first_name=0,
         )
-        fail = self.webserver.put_json(
+        fail = webserver.put_json(
             '/api/v1/addresses/%s' % address.uuid,
             put_data,
             status=400
         )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'body')
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'body'
 
-    def test_address_patch(self):
+    def test_address_patch(self, rollback_registry, webserver):
         """Address PATCH /api/v1/addresses/{{ uuid }}"""
-        address = self.create_address()
+        address = self.create_address(rollback_registry)
         patch_data = dict(
             first_name='Bob',
             last_name='Plop'
         )
-        response = self.webserver.patch_json(
+        response = webserver.patch_json(
             '/api/v1/addresses/%s' % address.uuid,
             patch_data,
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json_body.get('uuid'), str(address.uuid))
-        self.assertEqual(response.json_body.get('first_name'), 'Bob')
-        self.assertEqual(response.json_body.get('last_name'), 'Plop')
+        assert response.status_code == 200
+        assert response.json_body.get('uuid') == str(address.uuid)
+        assert response.json_body.get('first_name') == 'Bob'
+        assert response.json_body.get('last_name') == 'Plop'
 
-    def test_address_patch_fail_bad_path(self):
+    def test_address_patch_fail_bad_path(self, rollback_registry, webserver):
         """Address PATCH with bad path /api/v1/addresses/x"""
         patch_data = dict(
             first_name='Bob',
         )
-        fail = self.webserver.patch_json(
+        fail = webserver.patch_json(
             '/api/v1/addresses/x',
             patch_data,
             status=400
         )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'path')
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'path'
 
-    def test_address_patch_fail_bad_value_type(self):
+    def test_address_patch_fail_bad_value_type(self, rollback_registry,
+                                               webserver):
         """Address PATCH with bad value type /api/v1/addresses/{{ uuid }}"""
-        address = self.create_address()
+        address = self.create_address(rollback_registry)
         patch_data = dict(
             first_name=0,
         )
-        fail = self.webserver.patch_json(
+        fail = webserver.patch_json(
             '/api/v1/addresses/%s' % address.uuid,
             patch_data,
             status=400
         )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'body')
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'body'
 
-    def test_address_delete(self):
+    def test_address_delete(self, rollback_registry, webserver):
         """Address DELETE /api/v1/addresses/{{ uuid }}"""
-        address = self.create_address()
-        response = self.webserver.delete_json(
+        address = self.create_address(rollback_registry)
+        response = webserver.delete_json(
             '/api/v1/addresses/%s' % address.uuid,
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json_body), 0)
-        self.assertIsNone(response.json_body.get('errors'), None)
+        assert response.status_code == 200
+        assert len(response.json_body) == 0
+        assert response.json_body.get('errors') is None
 
-    def test_address_delete_fail_bad_path(self):
+    def test_address_delete_fail_bad_path(self, rollback_registry, webserver):
         """Address DELETE with bad path /api/v1/addresses/x"""
-        fail = self.webserver.patch_json(
-            '/api/v1/addresses/x',
-            status=400
-        )
-        self.assertEqual(fail.status_code, 400)
-        self.assertEqual(fail.json_body.get('status'), 'error')
-        self.assertEqual(
-            fail.json_body.get('errors')[0].get('location'), 'path')
+        fail = webserver.patch_json('/api/v1/addresses/x', status=400)
+        assert fail.status_code == 400
+        assert fail.json_body.get('status') == 'error'
+        assert fail.json_body.get('errors')[0].get('location') == 'path'

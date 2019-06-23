@@ -28,6 +28,7 @@ requirements = [
     'anyblok-pyramid-rest-api',
     'anyblok_address',
     'anyblok_mixins',
+    'marshmallow==3.0.0rc5',
 ]
 
 test_requirements = [
