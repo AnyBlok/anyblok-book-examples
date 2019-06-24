@@ -8,7 +8,7 @@
 
 
 class TestAddress:
-    """ Test python api on AnyBlok models"""
+    """Test extended registry.Address model"""
 
     def test_create_address(self, rollback_registry):
         registry = rollback_registry
