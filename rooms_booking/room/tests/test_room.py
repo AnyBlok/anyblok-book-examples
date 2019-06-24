@@ -24,7 +24,6 @@ class TestRoom:
         assert registry.Room.query().count() == room_count + 1
         assert room.name == "A1"
 
-
     def test_track_modification_date(self, rollback_registry):
         registry = rollback_registry
         before_create = datetime.now(tz=pytz.timezone(time.tzname[0]))
