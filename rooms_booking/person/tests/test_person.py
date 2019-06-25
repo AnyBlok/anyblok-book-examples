@@ -6,28 +6,18 @@
 # v. 2.0. If a copy of the MPL was not distributed with this file,You can
 # obtain one at http://mozilla.org/MPL/2.0/.
 
-from anyblok.tests.testcase import BlokTestCase
 
-
-class TestPerson(BlokTestCase):
+class TestPerson:
     """ Test python api on AnyBlok models"""
 
-    def test_create_person(self):
-        person_count = self.registry.Person.query().count()
-        person = self.registry.Person.insert(
+    def test_create_person(self, rollback_registry):
+        registry = rollback_registry
+        person_count = registry.Person.query().count()
+        person = registry.Person.insert(
             first_name="John",
             last_name="Doe",
         )
 
-        self.assertEqual(
-            self.registry.Person.query().count(),
-            person_count + 1
-        )
-        self.assertEqual(
-            person.first_name,
-            "John"
-        )
-        self.assertEqual(
-            person.last_name,
-            "Doe"
-        )
+        assert registry.Person.query().count() == person_count + 1
+        assert person.first_name == "John"
+        assert person.last_name == "Doe"

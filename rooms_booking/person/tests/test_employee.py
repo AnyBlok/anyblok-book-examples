@@ -7,56 +7,37 @@
 # v. 2.0. If a copy of the MPL was not distributed with this file,You can
 # obtain one at http://mozilla.org/MPL/2.0/.
 
-from anyblok.tests.testcase import BlokTestCase
 
-
-class TestEmployee(BlokTestCase):
+class TestEmployee:
     """ Test python api on AnyBlok models"""
 
-    def test_create_employee(self):
-        employee_count = self.registry.Person.Employee.query().count()
-        employee = self.registry.Person.Employee.insert(
+    def test_create_employee(self, rollback_registry):
+        registry = rollback_registry
+        employee_count = registry.Person.Employee.query().count()
+        employee = registry.Person.Employee.insert(
             first_name="John",
             last_name="Doe",
             position="unknown",
         )
 
-        self.assertEqual(
-            self.registry.Person.Employee.query().count(),
-            employee_count + 1
-        )
-        self.assertEqual(
-            employee.first_name,
-            "John"
-        )
-        self.assertEqual(
-            employee.last_name,
-            "Doe"
-        )
-        self.assertEqual(
-            employee.position,
-            "unknown"
-        )
+        assert registry.Person.Employee.query().count() == employee_count + 1
+        assert employee.first_name == "John"
+        assert employee.last_name == "Doe"
+        assert employee.position == "unknown"
 
-    def test_polymorphism(self):
-
-        employee_count = self.registry.Person.Employee.query().count()
-        person_count = self.registry.Person.query().count()
-        self.registry.Person.insert(
+    def test_polymorphism(self, rollback_registry):
+        registry = rollback_registry
+        employee_count = registry.Person.Employee.query().count()
+        person_count = registry.Person.query().count()
+        registry.Person.insert(
             first_name="John",
             last_name="Doe",
         )
-        self.registry.Person.Employee.insert(
+        registry.Person.Employee.insert(
             first_name="John",
             last_name="Doe",
             position="unknown",
         )
 
-        self.assertEqual(
-            self.registry.Person.query().count(),
-            person_count + 2
-        )
-        self.assertEqual(
-            self.registry.Person.Employee.query().count(),
-            employee_count + 1
-        )
+        assert registry.Person.query().count() == person_count + 2
+        assert registry.Person.Employee.query().count() == employee_count + 1
