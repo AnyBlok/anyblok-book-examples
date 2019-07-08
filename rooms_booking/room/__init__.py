@@ -8,7 +8,7 @@ class Room(Blok):
     """
     version = "0.1.0"
     author = "Pierre Verkest"
-    required = ['anyblok-core']
+    required = ['anyblok-core', 'address']
 
     @classmethod
     def import_declaration_module(cls):
@@ -31,8 +31,8 @@ class Room(Blok):
         config.add_route("example", "/example/{id}")
         config.scan(cls.__module__ + '.views')
 
-    def update(self, latest):
+    def update(self, latest_version):
         """Update blok"""
         # if we install this blok in the database we add a new record
-        if not latest:
+        if not latest_version:
             self.registry.Example.insert(name="An example")
