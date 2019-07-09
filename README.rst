@@ -24,8 +24,47 @@ Here the state of each branch
  III-06_   III-06_polymorphism_      |III-06-travis|   |III-06-coverage|
  ========= ========================= ================= ===================
 
+maintain
+--------
 
-* Free software: Mozilla Public License Version 2.0
+.. warning:
+
+    We often use force pushing (``git push --force``)  in this repository
+
+
+Why
+~~~
+
+- To automate change propagation over the book using rebases.
+- Provide to AnyBlok beginners reading the AnyBlok book a linear commit history
+
+How
+~~~
+
+In this master branch, a script is provided to automaticly rebase
+all child branches according their names. If a rebase has conflict
+the script will stop to let you fix it before carry on.
+
+So you can introduce a change somewhere in the book and it will be
+visible in all following branches to recreate a linear history
+from where you introduce that change.
+
+* Checkout the branche and introduce your change
+* commit that change
+* clone this repo and checkout the master branch in an other directory on
+  your computer
+* run apply changes in next chapters script to rebase all next chapters
+* run test all to run test on each branches
+* run push all to push using the force on each branches
+
+
+
+License
+-------
+
+`Free software: Mozilla Public License Version 2.0
+<http://mozilla.org/MPL/2.0/>`_
+
 
 Authors
 -------
