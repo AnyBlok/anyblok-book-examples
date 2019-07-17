@@ -1,3 +1,0 @@
-include doc/source/*.rst
-recursive-include doc/source */*.rst
-recursive-include doc/source */*/*.rst
