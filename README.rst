@@ -4,11 +4,17 @@ AnyBlok book examples
 
 The anyblok book example source code.
 
-In this repo you'll get a branch at the end of each chapter to help
-you to start with the expected environment before reading a chapter.
+In this master branch, each subdirectories are the content of each branches to
+avoid you to get some headkeak using ``git``
 
-In some special case we provide dedicated branch that helps to keep
-going and boring parts so you have to get the branch before the chapter.
+So if you want to helps us while fix issue in a chapter, please create
+a PR agains the according branch you get the issue.
+
+We have a branch at the end of each chapter to help
+book user to start with the expected environment before reading a chapter.
+
+In some special case we provide a dedicated branch that helps to keep
+going with boring parts before start a new chapter.
 
 Here the state of each branch
 
@@ -27,29 +33,41 @@ Here the state of each branch
 maintain
 --------
 
+We are using a branch per chapter. A script to helps to rebase each sub branches
+on top on the current branch.
+
+Then a dedicated build in the master branch to agregate each branches in a
+dedicated subdirectory to avoid gitbook users to be fluent with ``git``
+
+
 .. warning:
 
-    We often use force pushing (``git push --force``)  in this repository
+    So, we often use force pushing (``git push --force``)  in this repository
 
 
 Why
 ~~~
 
 - To automate change propagation over the book using rebases.
-- Provide to AnyBlok beginners reading the AnyBlok book a linear commit history
+- To provide a linear commit history
+- To avoid AnyBlok Book reader's using git over chapters
 
 How
 ~~~
+.. note:
+
+    Begore managing those changes, you should grant push right on this repo. Other
+    wise make a PR against the right branch !
 
 In this master branch, a script is provided to automaticly rebase
 all child branches according their names. If a rebase has conflict
 the script will stop to let you fix it before carry on.
 
-So you can introduce a change somewhere in the book and it will be
+So you can introduce a change somewhere in the book, or merge a PR and it will be
 visible in all following branches to recreate a linear history
-from where you introduce that change.
+from where the change were introduce.
 
-* Checkout the branche and introduce your change
+* Checkout the branche and introduce your change or merge a PR.
 * commit that change
 * clone this repo and checkout the master branch in an other directory on
   your computer
@@ -57,6 +75,8 @@ from where you introduce that change.
 * run test all to run test on each branches
 * run push all to push using the force on each branches
 
+To update the master branch, manually restart travis master branch job or
+wait a the weekly build !
 
 
 License
