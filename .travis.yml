@@ -13,6 +13,7 @@ matrix:
     - python: "3.7-dev"
     - python: "3.8-dev"
     - python: "nightly"
+    
 
 services:
   - postgresql
@@ -21,45 +22,27 @@ env:
   global:
     - ANYBLOK_DATABASE_DRIVER=postgresql
     - ANYBLOK_DATABASE_USER=postgres
+    - ANYBLOK_DATABASE_NAME=travis_ci_test
+  jobs:
+    - PROJECT_PATH=II_setup-project
+    - PROJECT_PATH=III-01_external-blok
 
 virtualenv:
   system_site_packages: false
 
-jobs:
-  include:
-    - stage: II_setup-project
-      env:
-        - ANYBLOK_DATABASE_NAME=II_setup-project
-      before_install:
-        - cd II_setup-project
-      install:
-        - pip install -U pip
-        - if [[ $TRAVIS_PYTHON_VERSION == '3.7-dev' ]]; then pip install python_editor texttable PyYAML; fi
-        - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
-        # only wheel
-        - pip install wheel
-        - pip install coveralls
-        - make setup-tests
-      script:
-        - make lint
-        - make test
-      after_success:
-        coveralls
-    - stage: III-01_external-blok
-      env:
-        - ANYBLOK_DATABASE_NAME=III-01_external-blok
-      before_install:
-        - cd III-01_external-blok
-      install:
-        - pip install -U pip
-        - if [[ $TRAVIS_PYTHON_VERSION == '3.7-dev' ]]; then pip install python_editor texttable PyYAML; fi
-        - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
-        # only wheel
-        - pip install wheel
-        - pip install coveralls
-        - make setup-tests
-      script:
-        - make lint
-        - make test
-      after_success:
-        coveralls
+before_install:
+  - cd $PROJECT_PATH
+
+install:
+  - pip install -U pip
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.7-dev' ]]; then pip install python_editor texttable PyYAML; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
+  # only wheel
+  - pip install wheel
+  - pip install coveralls
+  - make setup-tests
+script:
+  - make lint
+  - make test
+after_success:
+  - coveralls
