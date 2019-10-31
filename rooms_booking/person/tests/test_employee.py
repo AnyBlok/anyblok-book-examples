@@ -29,14 +29,15 @@ class TestEmployee:
         registry = rollback_registry
         employee_count = registry.Person.Employee.query().count()
         person_count = registry.Person.query().count()
+
         registry.Person.insert(
-            first_name="John",
-            last_name="Doe",
+            first_name="Alice",
+            last_name="Wonder",
         )
         registry.Person.Employee.insert(
             first_name="John",
             last_name="Doe",
-            position="unknown",
+            position="Accountant",
         )
 
         assert registry.Person.query().count() == person_count + 2

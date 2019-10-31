@@ -39,9 +39,18 @@ class Person(Blok):
 
     def update(self, latest_version):
         """Update blok"""
-        # if we install this blok in the database we add a new record
+        # if we install this blok in the database we add some new records
         if not latest_version:
             self.install()
 
     def install(self):
-        pass
+        """Install blok"""
+        self.registry.Person.insert(
+            first_name="Alice",
+            last_name="Wunderer"
+        )
+        self.registry.Person.Employee.insert(
+            first_name="John",
+            last_name="Doe",
+            position="Accountant"
+        )
