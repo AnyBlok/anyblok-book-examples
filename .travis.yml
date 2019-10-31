@@ -2,8 +2,6 @@ language: python
 sudo: false
 
 python:
-  - "3.4"
-  - "3.5"
   - "3.6"
   - "3.6-dev" # 3.6 development branch
   - "3.7-dev" # 3.7 development branch
@@ -29,8 +27,7 @@ services:
 
 install:
   - pip install -U pip
-  # only eggs: do an erreur with wheel
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then pip install testfixtures; fi
+  # only eggs: do an error with wheel
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7-dev' ]]; then pip install python_editor texttable PyYAML; fi
   - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then pip install python_editor texttable PyYAML; fi
   # only wheel
