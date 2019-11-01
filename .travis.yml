@@ -13,7 +13,6 @@ matrix:
     - python: "3.7-dev"
     - python: "3.8-dev"
     - python: "nightly"
-    
 
 services:
   - postgresql
@@ -31,7 +30,11 @@ virtualenv:
   system_site_packages: false
 
 before_install:
+  - ls *
+  - echo $PROJECT_PATH
   - cd $PROJECT_PATH
+  - ls *
+  - pwd
 
 install:
   - pip install -U pip
