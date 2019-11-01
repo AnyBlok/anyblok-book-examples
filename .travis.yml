@@ -25,16 +25,17 @@ env:
   jobs:
     - PROJECT_PATH=II_setup-project
     - PROJECT_PATH=III-01_external-blok
+    - PROJECT_PATH=III-02_extend-blok
+    - PROJECT_PATH=III-03_create-model
+    - PROJECT_PATH=III-04_mixins
+    - PROJECT_PATH=III-05_link-models
+    - PROJECT_PATH=IV-service
 
 virtualenv:
   system_site_packages: false
 
 before_install:
-  - ls *
-  - echo $PROJECT_PATH
   - cd $PROJECT_PATH
-  - ls *
-  - pwd
 
 install:
   - pip install -U pip
