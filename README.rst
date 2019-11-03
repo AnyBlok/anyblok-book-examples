@@ -22,6 +22,7 @@ Each directory is an Anyblok project of its own.
  III-04_   III-04_mixins_           
  III-05_   III-05_link-models_      
  III-06_   III-06_polymorphism_     
+ IV_       IV-service_
  ========= =========================
 
 
@@ -56,6 +57,9 @@ Authors
 
 .. _III-06: https://anyblok.gitbooks.io/anyblok-book/content/en/03_blok/06_polymorphism.html
 .. _III-06_polymorphism: https://github.com/AnyBlok/anyblok-book-examples/tree/master/III-06_polymorphism
+
+.. _IV: https://anyblok.github.io/anyblok-book/en/04_service/
+.. _IV_service: https://github.com/AnyBlok/anyblok-book-examples/tree/master/IV-service
 
 .. |travis| image:: https://travis-ci.org/AnyBlok/anyblok-book-examples.svg?branch=master
     :target: https://travis-ci.org/AnyBlok/anyblok-book-examples
