@@ -20,8 +20,9 @@ def route_index(request):
     No authentication required, html rendering is done through jinja2 templates
     """
     registry = request.anyblok.registry
-    # Instantiate a schema for data serialization. Exclude the fields we don't
-    # want to be exposed on template side
+    # Instantiate a schema for data serialization
+    # Using 'only' helps ensuring we give only the data we want to display
+    # on template side
     rooms_schema = RoomsSchema(
         registry=registry,
         many=True,

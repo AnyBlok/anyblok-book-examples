@@ -53,9 +53,15 @@ class Room(Blok):
             country="FRA",
             access="Crie fort pour réveiller le concierge",
         )
-        self.registry.Room.insert(name="Salle 101", capacity=25, address=sorbonne)
-        self.registry.Room.insert(name="Salle 102", capacity=30, address=sorbonne)
-        self.registry.Room.insert(name="Salle 103", capacity=28, address=sorbonne)
+        self.registry.Room.insert(
+            name="Salle 101", capacity=25, address=sorbonne
+        )
+        self.registry.Room.insert(
+            name="Salle 102", capacity=30, address=sorbonne
+        )
+        self.registry.Room.insert(
+            name="Salle 103", capacity=28, address=sorbonne
+        )
         trinity = self.registry.Address.insert(
             first_name="Trinity College",
             last_name="University of Oxford",
@@ -65,7 +71,9 @@ class Room(Blok):
             country="GBR",
             access="Ring the bell!",
         )
-        self.registry.Room.insert(name="Room 101", capacity=47, address=trinity)
+        self.registry.Room.insert(
+            name="Room 101", capacity=47, address=trinity
+        )
         self.registry.Room.insert(name="102", capacity=50, address=trinity)
         self.registry.Room.insert(name="103", capacity=42, address=trinity)
         imt_lille = self.registry.Address.insert(
@@ -78,11 +86,27 @@ class Room(Blok):
             country="FRA",
             access="Ring the bell!",
         )
-        self.registry.Room.insert(name="Salle E001S", capacity=42, address=imt_lille)
-        self.registry.Room.insert(name="Salle E002S", capacity=28, address=imt_lille)
-        self.registry.Room.insert(name="Salle E003S", capacity=60, address=imt_lille)
-        self.registry.Room.insert(name="Amphi Byron", capacity=200, address=imt_lille)
-        self.registry.Room.insert(name="Amphi Pascal", capacity=150, address=imt_lille)
-        self.registry.Room.insert(name="Amphi Morse", capacity=500, address=imt_lille)
-        self.registry.Room.insert(name="Amphi Shannon", capacity=200, address=imt_lille)
-        self.registry.Room.insert(name="Amphi Chappe", capacity=500, address=imt_lille)
+        self.registry.Room.insert(
+            name="Salle E001S", capacity=42, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Salle E002S", capacity=28, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Salle E003S", capacity=60, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Byron", capacity=200, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Pascal", capacity=150, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Morse", capacity=500, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Shannon", capacity=200, address=imt_lille
+        )
+        self.registry.Room.insert(
+            name="Amphi Chappe", capacity=500, address=imt_lille
+        )

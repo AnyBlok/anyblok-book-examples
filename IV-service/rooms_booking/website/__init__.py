@@ -6,14 +6,10 @@
 # v. 2.0. If a copy of the MPL was not distributed with this file,You can
 # obtain one at http://mozilla.org/MPL/2.0/.
 
-"""Room Blok declaration
+"""Rooms website Blok declaration
 """
 import os
-from uuid import UUID
-from datetime import datetime
 from anyblok.blok import Blok
-from anyblok_pyramid.adapter import uuid_adapter, datetime_adapter
-from pyramid.renderers import JSON
 
 
 class WebSite(Blok):

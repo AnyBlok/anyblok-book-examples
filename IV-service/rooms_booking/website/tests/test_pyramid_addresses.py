@@ -46,14 +46,18 @@ class TestApiAddressesBase:
         assert response.status_code == 200
         assert response.json_body[0].get("first_name") == "John"
 
-    def test_addresses_post_fail_empty_body(self, rollback_registry, webserver):
+    def test_addresses_post_fail_empty_body(
+        self, rollback_registry, webserver
+    ):
         """Address POST with empty body /api/v1/addresses"""
         fail = webserver.post_json("/api/v1/addresses", [dict()], status=400)
         assert fail.status_code == 400
         assert fail.json_body.get("status") == "error"
         assert fail.json_body.get("errors")[0].get("location") == "body"
 
-    def test_addresses_post_fail_bad_column(self, rollback_registry, webserver):
+    def test_addresses_post_fail_bad_column(
+        self, rollback_registry, webserver
+    ):
         """Address POST with bad column /api/v1/addresses"""
         address_with_bad_column = _ADDRESS.copy()
         address_with_bad_column["bad_column"] = "colum_value"
@@ -64,7 +68,9 @@ class TestApiAddressesBase:
         assert fail.json_body.get("status") == "error"
         assert fail.json_body.get("errors")[0].get("location") == "body"
 
-    def test_addresses_post_fail_bad_value_type(self, rollback_registry, webserver):
+    def test_addresses_post_fail_bad_value_type(
+        self, rollback_registry, webserver
+    ):
         """Address POST with bad value type /api/v1/addresses"""
         address_with_bad_value_type = _ADDRESS.copy()
         address_with_bad_value_type["first_name"] = 0
@@ -100,7 +106,9 @@ class TestApiAddressesBase:
         address = self.create_address(rollback_registry)
         put_data = _ADDRESS.copy()
         put_data.update(dict(first_name="Bob", last_name="Plop"))
-        response = webserver.put_json("/api/v1/addresses/%s" % address.uuid, put_data,)
+        response = webserver.put_json(
+            "/api/v1/addresses/%s" % address.uuid, put_data,
+        )
         assert response.status_code == 200
         assert response.json_body.get("uuid") == str(address.uuid)
         assert response.json_body.get("first_name") == "Bob"
@@ -114,7 +122,9 @@ class TestApiAddressesBase:
         assert fail.json_body.get("status") == "error"
         assert fail.json_body.get("errors")[0].get("location") == "path"
 
-    def test_address_put_fail_bad_value_type(self, rollback_registry, webserver):
+    def test_address_put_fail_bad_value_type(
+        self, rollback_registry, webserver
+    ):
         """Address PUT with bad value type /api/v1/addresses/{{ uuid }}"""
         address = self.create_address(rollback_registry)
         put_data = dict(first_name=0,)
@@ -140,12 +150,16 @@ class TestApiAddressesBase:
     def test_address_patch_fail_bad_path(self, rollback_registry, webserver):
         """Address PATCH with bad path /api/v1/addresses/x"""
         patch_data = dict(first_name="Bob",)
-        fail = webserver.patch_json("/api/v1/addresses/x", patch_data, status=400)
+        fail = webserver.patch_json(
+            "/api/v1/addresses/x", patch_data, status=400
+        )
         assert fail.status_code == 400
         assert fail.json_body.get("status") == "error"
         assert fail.json_body.get("errors")[0].get("location") == "path"
 
-    def test_address_patch_fail_bad_value_type(self, rollback_registry, webserver):
+    def test_address_patch_fail_bad_value_type(
+        self, rollback_registry, webserver
+    ):
         """Address PATCH with bad value type /api/v1/addresses/{{ uuid }}"""
         address = self.create_address(rollback_registry)
         patch_data = dict(first_name=0,)
@@ -159,7 +173,9 @@ class TestApiAddressesBase:
     def test_address_delete(self, rollback_registry, webserver):
         """Address DELETE /api/v1/addresses/{{ uuid }}"""
         address = self.create_address(rollback_registry)
-        response = webserver.delete_json("/api/v1/addresses/%s" % address.uuid,)
+        response = webserver.delete_json(
+            "/api/v1/addresses/%s" % address.uuid,
+        )
         assert response.status_code == 200
         assert len(response.json_body) == 0
         assert response.json_body.get("errors") is None

@@ -27,7 +27,9 @@ class TestRoom:
             access="Kick the door to open it!",
         )
         room_count = rollback_registry.Room.query().count()
-        room = rollback_registry.Room.insert(name="A1", capacity=25, address=an_address)
+        room = rollback_registry.Room.insert(
+            name="A1", capacity=25, address=an_address
+        )
         assert rollback_registry.Room.query().count() == room_count + 1
         assert room.name == "A1"
 
@@ -42,7 +44,9 @@ class TestRoom:
             access="Kick the door to open it!",
         )
         before_create = datetime.now(tz=pytz.timezone(time.tzname[0]))
-        room = rollback_registry.Room.insert(name="A1", capacity=25, address=an_address)
+        room = rollback_registry.Room.insert(
+            name="A1", capacity=25, address=an_address
+        )
         room.refresh()
         after_create = datetime.now(tz=pytz.timezone(time.tzname[0]))
         room.name = "A2"
