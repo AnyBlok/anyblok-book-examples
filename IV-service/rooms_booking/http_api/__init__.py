@@ -11,16 +11,17 @@
 from uuid import UUID
 from datetime import datetime
 from anyblok.blok import Blok
-from anyblok_pyramid.adapter import (uuid_adapter, datetime_adapter)
+from anyblok_pyramid.adapter import uuid_adapter, datetime_adapter
 from pyramid.renderers import JSON
 
 
 class HttpAPI(Blok):
     """Room Booking Http API's Blok class definition
     """
+
     version = "0.1.0"
     author = "Pierre Verkest"
-    required = ['anyblok-core', 'room']
+    required = ["anyblok-core", "room"]
 
     @classmethod
     def pyramid_load_config(cls, config):
@@ -33,7 +34,7 @@ class HttpAPI(Blok):
         json_renderer = JSON()
         json_renderer.add_adapter(UUID, uuid_adapter)
         json_renderer.add_adapter(datetime, datetime_adapter)
-        config.add_renderer('json', json_renderer)
+        config.add_renderer("json", json_renderer)
 
         # Scan available views
-        config.scan(cls.__module__ + '.views')
+        config.scan(cls.__module__ + ".views")

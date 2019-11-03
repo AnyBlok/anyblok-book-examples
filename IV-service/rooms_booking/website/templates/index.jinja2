@@ -1,13 +1,13 @@
 <html>
   <head>
-    <title>{{ message }}</title>
+    <title>{{ title }}</title>
   </head>
   <body>
-    <h1>{{ message }}</h1>
+    <h1>{{ title }}</h1>
     <h2>Salles</h2>
     <ul>
     {% for room in rooms %}
-    <li>{{ room.name }} ({{ room.capacity }})</li>
+    <li>{{ room.address.first_name }}, {{ room.name }} ({{ room.capacity }})</li>
     {% endfor %}
     </ul>
   </body>

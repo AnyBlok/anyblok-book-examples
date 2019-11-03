@@ -8,7 +8,7 @@
 import pytest
 
 
-@pytest.mark.usefixtures('rollback_registry')
+@pytest.mark.usefixtures("rollback_registry")
 class TestAddress:
     """ Test python api on AnyBlok models"""
 
@@ -21,7 +21,7 @@ class TestAddress:
             zip_code="OX1 4AW",
             city="Oxford",
             country="GBR",
-            access="Kick the door to open it!"
+            access="Kick the door to open it!",
         )
         assert rollback_registry.Address.query().count() == address_count + 1
         assert queens_college_address.access == "Kick the door to open it!"

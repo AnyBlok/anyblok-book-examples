@@ -11,9 +11,9 @@ from anyblok_pyramid import current_blok
 
 
 @resource(
-    collection_path='/api/v1/addresses',
-    path='/api/v1/addresses/{uuid}',
-    installed_blok=current_blok()
+    collection_path="/api/v1/addresses",
+    path="/api/v1/addresses/{uuid}",
+    installed_blok=current_blok(),
 )
 class AddressesResource(CrudResource):
     model = "Model.Address"

@@ -1,6 +1,6 @@
 # This file is a part of the AnyBlok / book examples project
 #
-#    Copyright (C) 2018 Pierre Verkest <pverkest@anybox.fr>
+#    Copyright (C) 2019 Franck Bret <franckbret@gmail.com>
 #
 # This Source Code Form is subject to the terms of the Mozilla Public License,
 # v. 2.0. If a copy of the MPL was not distributed with this file,You can
@@ -12,23 +12,24 @@ import os
 from uuid import UUID
 from datetime import datetime
 from anyblok.blok import Blok
-from anyblok_pyramid.adapter import (uuid_adapter, datetime_adapter)
+from anyblok_pyramid.adapter import uuid_adapter, datetime_adapter
 from pyramid.renderers import JSON
 
 
 class WebSite(Blok):
     """Room Booking website Blok class definition
     """
+
     version = "0.1.0"
-    author = "Pierre Verkest"
-    required = ['anyblok-core', 'room']
+    author = "Franck Bret"
+    required = ["anyblok-core", "room"]
 
     @classmethod
     def pyramid_load_config(cls, config):
         """Pyramid http server configuration / initialization
         """
         # Pyramid addons
-        config.include('pyramid_jinja2')
+        config.include("pyramid_jinja2")
 
         # Static resources
         here = os.path.abspath(os.path.dirname(__file__))
@@ -42,4 +43,4 @@ class WebSite(Blok):
         config.add_route("index", "/")
 
         # Scan available views
-        config.scan(cls.__module__ + '.views')
+        config.scan(cls.__module__ + ".views")
