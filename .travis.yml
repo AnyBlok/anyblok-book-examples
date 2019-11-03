@@ -29,6 +29,7 @@ env:
     - PROJECT_PATH=III-03_create-model
     - PROJECT_PATH=III-04_mixins
     - PROJECT_PATH=III-05_link-models
+    - PROJECT_PATH=III-06_polymorphism
     - PROJECT_PATH=IV-service
 
 virtualenv:
