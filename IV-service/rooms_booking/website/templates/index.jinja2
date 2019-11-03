@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>{{ message }}</title>
+  </head>
+  <body>
+    <h1>{{ message }}</h1>
+    <h2>Salles</h2>
+    <ul>
+    {% for room in rooms %}
+    <li>{{ room.name }} ({{ room.capacity }})</li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>

@@ -25,6 +25,7 @@ requirements = [
     'anyblok',
     'psycopg2',
     'anyblok_pyramid',
+    'pyramid_jinja2',
     'anyblok-pyramid-rest-api',
     'anyblok_address',
     'anyblok_mixins',
@@ -48,6 +49,7 @@ setup(
         'bloks': [
             'room=rooms_booking.room:Room',
             'rooms-booking-http-api=rooms_booking.http_api:HttpAPI',
+            'rooms-booking-website=rooms_booking.website:WebSite',
             ]
     },
     include_package_data=True,
@@ -59,8 +61,6 @@ setup(
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
