@@ -1,0 +1,23 @@
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  padding: 0.25rem;
+  margin: 0 auto;
+  max-width: 50rem;
+  color: #555;
+  background-color: #68cce2;
+}
+
+h1, h2 {
+  color: #1b90be;
+}
+
+header, main, footer {
+  background-color: #fff;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+header, footer{
+  text-align: center;
+}
