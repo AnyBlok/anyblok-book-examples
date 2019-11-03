@@ -52,7 +52,7 @@ lint: ## check style with flake8
 	flake8 rooms_booking
 
 test: ## run pytest
-	ANYBLOK_CONFIG_FILE=app.test.cfg pytest rooms_booking -ra -vv --cov=rooms_booking --cov-report=html
+	ANYBLOK_CONFIG_FILE=app.test.cfg pytest rooms_booking -ra -vv -s --cov=rooms_booking --cov-report=html
 
 documentation: ## generate documentation
 	anyblok_doc -c app.test.cfg --doc-format RST --doc-output doc/source/apidoc.rst
